@@ -2,6 +2,7 @@
 
 !.gitignore
 !.gitconfig
+!.zshrc
 !.vimrc
 !.vim/
 !.vim/autoload/
