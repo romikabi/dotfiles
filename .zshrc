@@ -32,6 +32,9 @@ fpath+=("$HOME/.zsh/pure")
 autoload -U promptinit; promptinit
 prompt pure
 
+# Hide vi-mode indicator
+export MODE_INDICATOR=' '
+
 # AUTOCOMPLETE
 ZSH_AUTOSUGGEST_STRATEGY=(history)
 bindkey '^ ' autosuggest-accept
