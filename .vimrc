@@ -3,6 +3,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/keith/swift.vim'
 Plug 'https://github.com/neovimhaskell/haskell-vim'
 Plug 'https://github.com/vim-syntastic/syntastic'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 call plug#end()
@@ -16,6 +18,7 @@ set autoindent
 set nocompatible
 set nu
 set hidden
+set ttimeoutlen=10
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
