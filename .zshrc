@@ -74,3 +74,8 @@ alias gfx='git commit --amend --no-edit'
 alias gcom='git checkout master'
 alias gsbu='git submodule update --init --recursive'
 alias gcomp='git checkout master && git pull && gsbu'
+
+export PATH="$PATH:$HOME/Library/Python/3.7/bin"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
