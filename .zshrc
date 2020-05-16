@@ -30,7 +30,7 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 
 # PURE PROMPT
-fpath+=("$HOME/.zsh/pure")
+fpath+=(${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/pure)
 autoload -U promptinit; promptinit
 prompt pure
 
@@ -72,6 +72,9 @@ alias vim-apple='/usr/bin/vim'
 alias vi-apple='/usr/bin/vi'
 
 alias e='exec zsh'
+alias vz='vim ~/.zshrc'
+alias vv='vim ~/.vimrc'
+alias vs='vim ~/dotfiles/scripts/setup.sh'
 alias shownotremote='git remote prune origin && git branch -vv | grep '\''origin/.*: gone]'\'' | awk '\''{print $1}'\'''
 alias prunenotremote='shownotremote | xargs git branch -d'
 alias prunenotremoteforce='shownotremote | xargs git branch -D'
