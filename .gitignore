@@ -1,9 +1,1 @@
-*
-
-!.gitignore
-!.gitconfig
-!.zshrc
-!.vimrc
-!.vim/
-!.vim/autoload/
-!.vim/autoload/plug.vim
+.DS_Store
