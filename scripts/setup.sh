@@ -106,8 +106,9 @@ DOT_VIMRC="$HOME/.vimrc"
 NVIM="$DOT_CONFIG/nvim"
 INIT_VIM="$DOT_VIM/init.vim"
 DOT_ZSHRC="$HOME/.zshrc"
+DOT_GITCONFIG="$HOME/.gitconfig"
 
-FILES_TO_WRITE=("$DOT_VIMRC" "$NVIM" "$INIT_VIM" "$DOT_ZSHRC")
+FILES_TO_WRITE=("$DOT_VIMRC" "$NVIM" "$INIT_VIM" "$DOT_ZSHRC" "$DOT_GITCONFIG")
 
 # check that there are no interrupting files
 if [ $FORCE -eq 0 ]; then
@@ -152,6 +153,7 @@ DOTFILES_DIR=$( cd $SCRIPT_DIR && git rev-parse --show-toplevel )
 # create symlinks
 link "$DOTFILES_DIR/.vimrc" "$DOT_VIMRC"
 link "$DOTFILES_DIR/.zshrc" "$DOT_ZSHRC"
+link "$DOTFILES_DIR/.gitconfig" "$DOT_GITCONFIG"
 link "$DOT_VIM" "$NVIM"
 link "$DOT_VIMRC" "$INIT_VIM"
 
