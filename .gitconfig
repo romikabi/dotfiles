@@ -23,3 +23,5 @@
 	tool = vimdiff
 [merge]
 	tool = vimdiff
+[pull]
+	ff = only

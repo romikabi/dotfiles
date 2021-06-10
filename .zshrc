@@ -24,6 +24,7 @@ plugins=(
   zsh-syntax-highlighting
 )
 
+DISABLE_MAGIC_FUNCTIONS=true
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -32,10 +33,12 @@ export LANG=en_US.UTF-8
 # PURE PROMPT
 fpath+=(${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/pure)
 autoload -U promptinit; promptinit
+PURE_GIT_PULL=0
 prompt pure
 
 # Hide vi-mode indicator
 export MODE_INDICATOR=' '
+VI_MODE_SET_CURSOR=true
 
 # AUTOCOMPLETE
 ZSH_AUTOSUGGEST_STRATEGY=(history)
@@ -78,17 +81,14 @@ alias vs='vim ~/dotfiles/scripts/setup.sh'
 alias shownotremote='git remote prune origin && git branch -vv | grep '\''origin/.*: gone]'\'' | awk '\''{print $1}'\'''
 alias prunenotremote='shownotremote | xargs git branch -d'
 alias prunenotremoteforce='shownotremote | xargs git branch -D'
-alias showrelease='git remote prune origin && git branch -vv | grep '\''origin/release-.*]'\'' | awk '\''{print $1}'\'''
-alias releaseprune='showrelease | xargs git branch -d'
-alias releasepruneforce='showrelease | xargs git branch -D'
-alias ghist='git log --pretty=format:'\''%h %ad | %s%d [%an]'\'' --graph --date=short'
 alias gplg='git log --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
 alias gfx='git commit --amend --no-edit'
-alias gcom='git checkout master'
 alias gsbu='git submodule update --init --recursive'
-alias gcomp='git checkout master && git pull && gsbu'
-alias ig_all='ig --check --xcode-source-filters="//*"'
-alias ig_xcode='osascript -e "tell app \"Xcode\" to quit" && ig_all -x --open && ig_all'
+alias testyamb='ib Yamb_tests YandexMessengerCoreTests YandexMessengerClientTests && python src/yandex/ios/infra/parallel_test_runner.py -j3 -c "yamb#Yamb_tests:Yamb_tests_module" -c "yamb_core#YandexMessengerCoreTests:--osx-based" -c "yamb_client#YandexMessengerClientTests:--osx-based"  -p src/out/Debug-x64 --log-format simple'
+alias gft='git cl format'
+alias gdft='git diff --cached --name-only --diff-filter=d | xargs git cl format'
+alias gdd='git diff $(git diff --cached --name-only --diff-filter=d)'
+alias gda='git diff --cached --name-only --diff-filter=d | xargs git add'
 
 # Enhanced `git worktree add`, respects sparce checkout from the get-go
 addtree() {
@@ -105,9 +105,17 @@ addtree() {
     popd > /dev/null
 }
 
+n() {
+    osascript -e "display notification \"$([[ $? = 0 ]] && echo Success || echo Failure)\" with title \"$(history | tail -n1 | cut -d " " -f4-)\""
+}
+
 export PATH="$PATH:$HOME/Library/Python/3.7/bin"
 export PATH="$PATH:$HOME/Projects/ios_tools/infra"
 export PATH="$PATH:$HOME/Projects/depot_tools"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+test -e /Users/romikabi/.iterm2_shell_integration.zsh && source /Users/romikabi/.iterm2_shell_integration.zsh || true
+
+# Haskell ghcup
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
