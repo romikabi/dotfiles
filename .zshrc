@@ -87,7 +87,7 @@ alias gsbu='git submodule update --init --recursive'
 alias testyamb='ib Yamb_tests YandexMessengerCoreTests YandexMessengerClientTests && python src/yandex/ios/infra/parallel_test_runner.py -j3 -c "yamb#Yamb_tests:Yamb_tests_module" -c "yamb_core#YandexMessengerCoreTests:--osx-based" -c "yamb_client#YandexMessengerClientTests:--osx-based"  -p src/out/Debug-x64 --log-format simple'
 alias gft='git cl format'
 alias gdft='git diff --cached --name-only --diff-filter=d | xargs git cl format'
-alias gdd='git diff $(git diff --cached --name-only --diff-filter=d)'
+alias gdd='git diff --cached --name-only --diff-filter=d | xargs git diff'
 alias gda='git diff --cached --name-only --diff-filter=d | xargs git add'
 
 # Enhanced `git worktree add`, respects sparce checkout from the get-go

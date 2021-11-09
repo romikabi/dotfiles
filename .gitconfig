@@ -20,8 +20,12 @@
     process = git-lfs filter-process
     required = true
 [diff]
-	tool = vimdiff
+  tool = vscode
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
 [merge]
-	tool = vimdiff
+  tool = vscode
+[mergetool "vscode"]
+  cmd = code --wait $MERGED
 [pull]
 	ff = only
