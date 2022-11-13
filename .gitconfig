@@ -28,4 +28,4 @@
 [mergetool "vscode"]
   cmd = code --wait $MERGED
 [pull]
-	ff = only
+  ff = only

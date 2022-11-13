@@ -51,7 +51,7 @@ endif
 set undofile
 set undodir=$HOME/.vim/undodir
 
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "M",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
