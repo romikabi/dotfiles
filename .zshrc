@@ -63,11 +63,10 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 export FZF_DEFAULT_COMMAND='fd --type f'
 
 # Shadowing
-alias git='/usr/local/bin/git'
+alias git='/opt/homebrew/bin/git'
 alias v='nvim'
 alias vi='v'
 alias vim='v'
-alias readlink='/usr/local/bin/greadlink'
 
 # Shadowed mapping
 alias git-apple='/usr/bin/git'
