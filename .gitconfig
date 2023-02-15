@@ -29,3 +29,6 @@
   cmd = code --wait $MERGED
 [pull]
   ff = only
+[user]
+	email = abuzyarovroman@gmail.com
+	name = Roman Abuziarov

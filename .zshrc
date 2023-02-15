@@ -1,6 +1,9 @@
 # SSH
 ssh-add --apple-load-keychain
 
+# Completions
+FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export ZSH="/Users/romikabi/.oh-my-zsh"
