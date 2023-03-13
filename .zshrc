@@ -42,6 +42,10 @@ prompt pure
 export MODE_INDICATOR=' '
 VI_MODE_SET_CURSOR=true
 
+VI_MODE_CURSOR_NORMAL=4
+VI_MODE_CURSOR_VISUAL=4
+VI_MODE_CURSOR_INSERT=4
+
 # AUTOCOMPLETE
 ZSH_AUTOSUGGEST_STRATEGY=(history)
 bindkey '^ ' autosuggest-accept
@@ -80,9 +84,7 @@ alias e='exec zsh'
 alias vz='vim ~/.zshrc'
 alias vv='vim ~/.vimrc'
 alias vs='vim ~/dotfiles/scripts/setup.sh'
-alias shownotremote='git remote prune origin && git branch -vv | grep '\''origin/.*: gone]'\'' | awk '\''{print $1}'\'''
-alias prunenotremote='shownotremote | xargs git branch -d'
-alias prunenotremoteforce='shownotremote | xargs git branch -D'
+alias gonebranches='git remote prune origin && git branch -vv | grep '\''origin/.*: gone]'\'' | awk '\''{print $1}'\'''
 alias gplg='git log --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
 alias gfx='git commit --amend --no-edit'
 alias gsbu='git submodule update --init --recursive'
