@@ -109,10 +109,6 @@ addtree() {
     popd > /dev/null
 }
 
-n() {
-    osascript -e "display notification \"$([[ $? = 0 ]] && echo Success || echo Failure)\" with title \"$(history | tail -n1 | cut -d " " -f4-)\""
-}
-
 export PATH="$PATH:$HOME/Library/Python/3.7/bin"
 export PATH="$PATH:$HOME/Projects/ios_tools/infra"
 export PATH="$PATH:$HOME/Projects/depot_tools"
