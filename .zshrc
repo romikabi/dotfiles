@@ -6,6 +6,10 @@ FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# n
+export N_PREFIX=$HOME/.n
+export PATH=$N_PREFIX/bin:$PATH
+
 export ZSH="/Users/romikabi/.oh-my-zsh"
 
 ZSH_THEME=""
@@ -89,10 +93,8 @@ alias gplg='git log --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %
 alias gfx='git commit --amend --no-edit'
 alias gsbu='git submodule update --init --recursive'
 alias testyamb='ib Yamb_tests YandexMessengerCoreTests YandexMessengerClientTests && python src/yandex/ios/infra/parallel_test_runner.py -j3 -c "yamb#Yamb_tests:Yamb_tests_module" -c "yamb_core#YandexMessengerCoreTests:--osx-based" -c "yamb_client#YandexMessengerClientTests:--osx-based"  -p src/out/Debug-x64 --log-format simple'
-alias gft='git cl format'
-alias gdft='git diff --cached --name-only --diff-filter=d | xargs git cl format'
-alias gdd='git diff --cached --name-only --diff-filter=d | xargs git diff'
-alias gda='git diff --cached --name-only --diff-filter=d | xargs git add'
+alias gfs='~/Projects/git-format-staged/git-format-staged'
+alias gft='gfs --formatter "swiftformat stdin --stdinpath '{}'" "*.swift"'
 
 # Enhanced `git worktree add`, respects sparce checkout from the get-go
 addtree() {

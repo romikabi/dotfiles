@@ -29,6 +29,3 @@
   cmd = code --wait $MERGED
 [pull]
   ff = only
-[user]
-	email = roman@ultimate.app
-	name = Roman Abuziarov
