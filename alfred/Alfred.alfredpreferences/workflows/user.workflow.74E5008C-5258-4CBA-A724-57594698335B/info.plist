@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>romikabi.formatcall</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>5286477A-1B1A-4E78-BB6F-05BA183B5FB0</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>631A4A0B-6789-487B-996B-B8863485E01E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>FA40102A-E0B3-4851-A25E-047BB0F9FCB9</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5286477A-1B1A-4E78-BB6F-05BA183B5FB0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>romikabi</string>
+	<key>description</key>
+	<string></string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Format Call</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>#!/usr/bin/swift
+
+import Foundation
+
+struct RegularExpression {
+  typealias Options = NSRegularExpression.Options
+  typealias MatchingOptions = NSRegularExpression.MatchingOptions
+
+  init(pattern: String, options: Options = []) throws {
+    regex = try NSRegularExpression(pattern: pattern, options: options)
+  }
+
+  func replace(
+    in string: String,
+    with template: String,
+    options: MatchingOptions = []
+  ) -&gt; Replacing {
+    let mutable = NSMutableString(string: string)
+    let count = regex.replaceMatches(
+      in: mutable,
+      options: options,
+      range: string.nsRange,
+      withTemplate: template
+    )
+    assert(count &gt;= 0)
+    return Replacing(count: UInt(count), string: mutable as String)
+  }
+
+  private let regex: NSRegularExpression
+}
+
+extension RegularExpression {
+  struct Replacing {
+    let count: UInt
+    let string: String
+  }
+}
+
+private extension String {
+  var nsRange: NSRange {
+    NSRange(startIndex..&lt;endIndex, in: self)
+  }
+}
+
+private func printUsage() {
+  let toolName = CommandLine.arguments.first ?? "tool"
+  print("""
+  usage: \(toolName) [-h]
+
+  positional arguments:
+    string        input for formatting
+
+  optional argumets:
+    -h, --help    show this help message
+  """)
+}
+
+guard Set(CommandLine.arguments).isDisjoint(with: ["-h", "--help"]) else {
+  printUsage()
+  exit(0)
+}
+
+guard CommandLine.arguments.count == 2, let input = CommandLine.arguments.last else {
+  printUsage()
+  exit(1)
+}
+
+let regex = try! RegularExpression(pattern: #"((?&lt;![\(\s])(?=\)))|((?&lt;=\()(?![\)\s]))|((?&lt;=,)(?!\n))"#)
+let replacing = regex.replace(in: input, with: "\n$0")
+print(replacing.string, terminator: "")</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>10</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>5286477A-1B1A-4E78-BB6F-05BA183B5FB0</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<true/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>631A4A0B-6789-487B-996B-B8863485E01E</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>1</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>9</integer>
+				<key>hotmod</key>
+				<integer>1310720</integer>
+				<key>hotstring</key>
+				<string>V</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>FA40102A-E0B3-4851-A25E-047BB0F9FCB9</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>5286477A-1B1A-4E78-BB6F-05BA183B5FB0</key>
+		<dict>
+			<key>xpos</key>
+			<real>215</real>
+			<key>ypos</key>
+			<real>145</real>
+		</dict>
+		<key>631A4A0B-6789-487B-996B-B8863485E01E</key>
+		<dict>
+			<key>xpos</key>
+			<real>400</real>
+			<key>ypos</key>
+			<real>145</real>
+		</dict>
+		<key>FA40102A-E0B3-4851-A25E-047BB0F9FCB9</key>
+		<dict>
+			<key>xpos</key>
+			<real>30</real>
+			<key>ypos</key>
+			<real>145</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
