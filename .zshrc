@@ -4,6 +4,9 @@ ssh-add --apple-load-keychain
 # Completions
 FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 
+# Local Setup
+source /Users/romikabi/.zshrc-private
+
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # n
