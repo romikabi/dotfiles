@@ -127,5 +127,3 @@ test -e /Users/romikabi/.iterm2_shell_integration.zsh && source /Users/romikabi/
 
 # Haskell ghcup
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
-
-source /Users/romikabi/.docker/init-zsh.sh || true # Added by Docker Desktop
