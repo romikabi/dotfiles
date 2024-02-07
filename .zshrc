@@ -5,7 +5,7 @@ ssh-add --apple-load-keychain
 FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 
 # Local Setup
-source /Users/romikabi/.zshrc-private
+source $HOME/.zshrc-private
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -13,7 +13,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export N_PREFIX=$HOME/.n
 export PATH=$N_PREFIX/bin:$PATH
 
-export ZSH="/Users/romikabi/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME=""
 
@@ -123,7 +123,6 @@ export PATH="$PATH:$HOME/Projects/depot_tools"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-test -e /Users/romikabi/.iterm2_shell_integration.zsh && source /Users/romikabi/.iterm2_shell_integration.zsh || true
 
 # Haskell ghcup
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
