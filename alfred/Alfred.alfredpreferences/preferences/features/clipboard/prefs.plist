@@ -8,5 +8,7 @@
 	<integer>1</integer>
 	<key>persistForImages</key>
 	<integer>1</integer>
+	<key>snippetMatchWordBased</key>
+	<false/>
 </dict>
 </plist>

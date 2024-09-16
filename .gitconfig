@@ -29,3 +29,5 @@
   cmd = code --wait $MERGED
 [pull]
   ff = only
+[rerere]
+	enabled = true
