@@ -1,5 +1,7 @@
 # SSH
-ssh-add --apple-load-keychain
+ssh-add $HOME/.ssh/id
+
+source $HOME/.bashrc
 
 # Completions
 FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
@@ -77,15 +79,14 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 export FZF_DEFAULT_COMMAND='fd --type f'
 
 # Shadowing
-alias git='/opt/homebrew/bin/git'
 alias v='nvim'
 alias vi='v'
 alias vim='v'
 
 # Shadowed mapping
-alias git-apple='/usr/bin/git'
-alias vim-apple='/usr/bin/vim'
-alias vi-apple='/usr/bin/vi'
+alias git-system='/usr/bin/git'
+alias vim-system='/usr/bin/vim'
+alias vi-system='/usr/bin/vi'
 
 alias e='exec zsh'
 alias vz='vim ~/.zshrc'
