@@ -1,8 +1,6 @@
 # SSH
 ssh-add $HOME/.ssh/id
 
-source $HOME/.bashrc
-
 # Completions
 FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 
@@ -89,9 +87,9 @@ alias vim-system='/usr/bin/vim'
 alias vi-system='/usr/bin/vi'
 
 alias e='exec zsh'
-alias vz='vim ~/.zshrc'
-alias vv='vim ~/.vimrc'
-alias vs='vim ~/dotfiles/scripts/setup.sh'
+alias vz='v ~/.zshrc'
+alias vv='v ~/.vimrc'
+alias vs='v ~/dotfiles/scripts/setup.sh'
 alias gonebranches='git remote prune origin >> /dev/null && git branch -vv | grep '\''origin/.*: gone]'\'' | awk '\''{print $1}'\'''
 alias gplg='git log --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
 alias gfx='git commit --amend --no-edit'
