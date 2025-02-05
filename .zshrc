@@ -100,6 +100,8 @@ alias gft="gfs --formatter 'swift-format -i -r -p '{}'' '*.swift'"
 alias gdft='git diff --cached --name-only --diff-filter=d | xargs swift-format -i -r -p'
 alias gdd='git diff --cached --name-only --diff-filter=d | xargs git diff'
 alias gda='git diff --cached --name-only --diff-filter=d | xargs git add'
+alias gh='git rev-parse HEAD | xargs echo -n'
+alias ghc='gh | pbcopy'
 
 # Enhanced `git worktree add`, respects sparce checkout from the get-go
 addtree() {
@@ -125,3 +127,8 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # Haskell ghcup
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
+
+export AWS_SDK_LOAD_CONFIG=true
+export GOPRIVATE=github.snooguts.net
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
